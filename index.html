@@ -77,8 +77,56 @@
             <button class="btn" id="reset" onclick="reset()">Reset</button>
         </div>
     </div>
-<!--  -->
-    <script src="script.js"></script>
+    <!--  -->
+
+    <script>
+        var hr = 0;
+        var min = 0;
+        var sec = 0;
+        var count = 0;
+
+        function start() {
+            return run = setInterval(timing, 100)
+        }
+
+
+        function timing() {
+            count++;
+            if (count == 10) {
+                count = 0;
+                sec++;
+                if (sec == 60) {
+                    sec = 0;
+                    min++;
+                }
+                if (sec <= 9) {
+                    sec = "0" + sec;
+                }
+            }
+            // ////
+            if (count < 11) {
+                count = "0" + count;
+            }
+
+            if (min == 60) {
+                min = 0;
+                hr++;
+            }
+            // ///
+            document.getElementById("count").innerHTML = count;
+            document.getElementById("min").innerHTML = min;
+            document.getElementById("sec").innerHTML = sec;
+            document.getElementById("hr").innerHTML = hr;
+        }
+        // stop btn click function
+        function stop() {
+            clearInterval(run)
+        }
+        // reset btn click function
+        function reset() {
+            window.location.reload();
+        }
+    </script>
 </body>
 
 </html>
